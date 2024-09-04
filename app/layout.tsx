@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { ThemeProvider } from 'next-themes';
 import "./globals.css";
+import { SidebarDemo } from "@/components/ui/SideBarComponent";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body><ThemeProvider attribute="class" defaultTheme="dark">     <SidebarDemo>{children}</SidebarDemo></ThemeProvider></body>
     </html>
   );
 }
