@@ -5,7 +5,7 @@ import { Genre } from '@/types/genre';
 
 
 export async function GenresPage() {
-  const genres = await query<Genre>('SELECT genre_name as title, 1 as id , imageurl as src FROM genre');
+  const genres = await query<Genre>('SELECT genre_name as title, 1 as id , imageurl as src FROM genre where active = 1');
   console.log(genres)
   return (
     <FocusCards cards={genres} />
