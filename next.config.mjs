@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {images: {
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,6 +17,11 @@ const nextConfig = {images: {
       {
         protocol: 'https',
         hostname: 'm.media-amazon.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'instagram.fskg5-2.fna.fbcdn.net',
         pathname: '/**',
       },
     ],
