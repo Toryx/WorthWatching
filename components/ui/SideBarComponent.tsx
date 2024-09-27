@@ -14,12 +14,14 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { useRouter } from 'next/navigation'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import { useAuth } from '@/app/context/AuthContext';
 
 
 
 export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>) {
   const [opendialog, setOpendialog] = useState(false)
   const router = useRouter();
+  const { isLoggedIn, login, logout } = useAuth();
 
   function handleDisconnect () {
     setOpendialog(false);
@@ -27,9 +29,15 @@ export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>) {
   
   }
   function handleSidebarClick (link:string) {
+    
     setOpen(false);
     if (link == 'Logout') {
       setOpendialog(true);
+      logout();
+    }
+    if (link == 'Login') {
+      console.log('ggwp')
+      router.push('/login');
     }
   }
 
@@ -115,8 +123,8 @@ export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>) {
       ),
     },
     {
-      label: "Logout",
-      href: "#",
+      label:  isLoggedIn ? "Logout" : "Login",
+      href: isLoggedIn ? "#" : "login",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
       ),
@@ -142,6 +150,7 @@ export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>) {
             </div>
           </div>
           <div>
+          {isLoggedIn ? (
             <SidebarLink className="bottom-5 fixed" onClick={() => setOpen(false)}
               link={{
                 label: "Ilias Tory",
@@ -156,7 +165,7 @@ export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>) {
                   />
                 ),
               }}
-            />
+            />) : <></>}
           </div>
         </SidebarBody>
       </Sidebar>

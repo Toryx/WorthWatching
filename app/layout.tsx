@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from 'next-themes';
 import "./globals.css";
 import { SidebarDemo } from "@/components/ui/SideBarComponent";
-
+import { AuthProvider } from './context/AuthContext';
 
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body><ThemeProvider attribute="class" defaultTheme="dark">     <SidebarDemo>{children}</SidebarDemo></ThemeProvider></body>
+      <body><ThemeProvider attribute="class" defaultTheme="dark"> <AuthProvider>  <SidebarDemo>{children}</SidebarDemo></AuthProvider></ThemeProvider></body>
     </html>
   );
 }
