@@ -1,10 +1,14 @@
+'use client'
 import SigninFormDemo from '@/components/example/signin-form-demo'
 import React from 'react'
+import { SessionProvider } from 'next-auth/react'
 
 const page = () => {
   return (
-    <div className='overflow-x-auto whitespace-nowrap h-full'>
+    <div className=''>
+      <SessionProvider>
       <SigninFormDemo/>
+      </SessionProvider>
     </div>
   )
 }

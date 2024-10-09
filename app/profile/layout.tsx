@@ -13,8 +13,13 @@ export default function ProfileLayout({
     children: React.ReactNode
   }) {
     return (
-      <section>
-        {children}
-      </section>
+       <section className="flex h-full sm:h-screen mx-auto">
+      <div className="absolute top-0 left-0 [background:radial-gradient(125%_125%_at_50%_10%,#0C061C_40%,#180c39_100%)]">
+            {children}
+          </div>
+
+        </section>
+
+      
     )
   }

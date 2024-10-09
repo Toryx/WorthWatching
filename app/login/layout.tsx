@@ -1,6 +1,4 @@
-import { SidebarDemo } from "@/components/ui/SideBarComponent"
 import { Metadata } from "next";
-
 
 
 export const metadata: Metadata = {
@@ -13,8 +11,11 @@ export default function LoginLayout({
     children: React.ReactNode
   }) {
     return (
-      <section>
+
+      <section className="flex h-auto w-screen">
+      <div className="absolute top-0 left-0 [background:radial-gradient(125%_125%_at_50%_10%,#0C061C_40%,#180c39_100%)]">
         {children}
+        </div>
       </section>
     )
   }

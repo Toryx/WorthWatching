@@ -4,7 +4,7 @@ import { Genre } from '@/types/genre';
 
 // This page is now an async function, which works fine in Next.js (App Router)
 const GenrePage = async () => {
-  const genres = await query<Genre>('SELECT genre_name as title, 1 as id, imageurl as src FROM genre WHERE active = 1');
+  const genres = await query<Genre>('SELECT genre_name as title, genre_id as id, imageurl as src FROM genre WHERE active = 1');
   
   return (
     <div className="h-full-10">
