@@ -1,4 +1,6 @@
 - Worth Watching Movies
+
+
 Its a React Next.Js App Router Project with TailWind-CSS.
 It uses Next Auth for Google Authentication
 and MySQL Database for the Movies and all the data.
