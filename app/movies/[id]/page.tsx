@@ -11,6 +11,7 @@ interface Movie {
   release_date: Date;
   vote_average: string;
   homepage: string;
+  imdb : number;
 }
 import BasicRating from '@/components/rating'
 import BasicStaticRating from '@/components/ratingstatic'
@@ -159,7 +160,7 @@ export default function MoviePage({ params }: { params: { id: string } }) {
             <h2 className='col-span-1 md:col-span-2 m-3  order-1 md:order-2'>{movinfo?.descr}</h2>
             <div className='mx-2 col-span-1 order-2 md:order-2 items-center flex-col'>
               <h1 className='text-xl mb-2 text-center'>IMDB Rating</h1>
-              <BasicStaticRating />
+              <BasicStaticRating rate={movinfo?.imdb||0} />
               <h1 className='text-xl mb-2 text-center'>Rate</h1>
               <BasicRating />
               <div className='grid-cols-2 flex justify-around my-5'>

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     });
 
     const [rows]: any[] = await connection.query(`SELECT title as title, movie_id as id,
-    overview as descr, release_date, vote_average,
+    overview as descr, release_date, vote_average imdb,
     homepage,
     IFNULL(banner,"https://picfiles.alphacoders.com/231/231190.jpg") as src,
     (SELECT GROUP_CONCAT(genre.genre_name) AS gg

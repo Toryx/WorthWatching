@@ -38,10 +38,9 @@ export default function SigninFormDemo() {
 
 
   async function SignInWithGoogle() {
-    console.log('1');
     try {
-      await signIn('google',{ callbackUrl: '/profile', prompt: 'login' });
-      console.log('2'); // This will likely not be reached unless there is an error
+      await signIn('google',{ callbackUrl: '/initialize', 
+        prompt: "select_account", });
     } catch (error) {
       console.error('Sign-in error:', error);
     }

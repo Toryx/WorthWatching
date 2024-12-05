@@ -212,7 +212,7 @@ const Page = () => {
                     </div>
                   </Listbox>
                 </div>
-                <ResponsiveContainer className="col-span-2" width="100%" height={230}>
+                <ResponsiveContainer className="col-span-2 pr-10" width="100%" height={230}>
                 <LineChart data={monthsData}>
                   <Line type="monotone" dataKey="count" stroke="#8884d8" strokeWidth={3} />
                   <CartesianGrid stroke="#ccc" />

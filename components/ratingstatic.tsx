@@ -2,20 +2,22 @@
 import Rating from '@mui/material/Rating';
 import * as React from 'react';
 
-export default function BasicStaticRating() {
-  const [value, setValue] = React.useState<number | null>(5);
-
+interface Rating {
+  rate: number | 0;
+}
+export default function BasicStaticRating({ rate }: Rating) {
+ const rating =rate/2
+ console.log(rating)
   return (
     <div className='text-center'>
-      <Rating sx={{color:"#4d7cbd",fontSize:"40px"}}
-        precision ={0.5}
+    <Rating sx={{color:"#c084fc",fontSize:"40px", "& .MuiRating-iconEmpty": {
+    color: "#a78bfa", // Set empty stars to white
+  },
+}}
+        precision ={0.1}
         readOnly 
         size="large"
-        name="simple-controlled"
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        value={rating}
       />
     </div>
 

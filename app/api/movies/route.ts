@@ -14,15 +14,21 @@ export async function POST(request: Request) {
         database: process.env.DB_NAME as string,
     });
     const searchQuery = `%${movieId}%`;
-    const [rows]: any[] = await connection.query(`SELECT title as title,movie_id as id ,
+    const [rows]: any[] =  await connection.query(`SELECT title as title,movie_id as id ,
     IFNULL(poster, "https://m.media-amazon.com/images/M/MV5BMTk1MzY1MzU1MF5BMl5BanBnXkFtZTcwOTQ2NjM3MQ@@._V1_.jpg") as src
-      FROM movie where is_active=1 and title like ?`, [searchQuery]);
+      FROM movie where is_active=1 and title like ?`, [searchQuery])
+      ;
+    // if (rows.length = 0) {
+    //   const [rows]: any[] = await connection.query(`SELECT title as title,movie_id as id ,
+    //     IFNULL(poster, "https://m.media-amazon.com/images/M/MV5BMTk1MzY1MzU1MF5BMl5BanBnXkFtZTcwOTQ2NjM3MQ@@._V1_.jpg") as src
+    //       FROM movie where is_active=1 `);
+    // }
   
     await connection.end();
     if (rows.length > 0) {
       return NextResponse.json({ success: true,  data: rows });
     } else {
-      return NextResponse.json({ success: true, data:'' });
+      return NextResponse.json({ success: false, data:'' });
     }
    
   } catch (error) {

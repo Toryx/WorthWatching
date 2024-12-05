@@ -162,7 +162,7 @@ export function SidebarDemo({children}:Readonly<{children:React.ReactNode}>)
                   href: "/profile",
                   icon: (
                     <Image
-                      src="https://instagram.fskg5-2.fna.fbcdn.net/v/t51.2885-19/449422512_1477258279568741_5007836220017555851_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fskg5-2.fna.fbcdn.net&_nc_cat=105&_nc_ohc=mxZN5URqHNQQ7kNvgFlNsA_&_nc_gid=529ed4d4b81048cfbd479523e3cb099e&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AYDxFlk61rvezqS_An9Z_UzeEjCVKqSnPV6cXE8XazaclA&oe=66F0E86B&_nc_sid=7a9f4b"
+                      src={session?.user.image || "./public/eltoro.png"}
                       className="h-7 w-7 flex-shrink-0 rounded-full"
                       width={50}
                       height={50}

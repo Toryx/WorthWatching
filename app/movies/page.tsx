@@ -11,6 +11,7 @@ const Page = () => {
   const [movieSearch, setMovieSearch] = useState<string>('');
   const [showDeleteIcon, setShowDeleteIcon] = useState<boolean>(false);
   const [movinfo, setmovieInfo] = useState<Movie[] | null>(null);
+  const [movexists, setMovieExists] = useState<boolean | null>(true);
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (movieSearch != '') {
       setShowDeleteIcon(true);
@@ -28,7 +29,7 @@ const Page = () => {
 
       const result = await response.json();
       setmovieInfo(result.data)
-      console.log(movinfo)
+      setMovieExists(result.success)
     } catch (error) {
       console.error('API error:', error);
     }
@@ -60,7 +61,11 @@ const Page = () => {
           <button onClick={() => searchMovie()} className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-purple-900 dark:hover:bg-purple-700 dark:focus:ring-blue-800">Search</button>
         </div>
       </div>
-      <Movies movies={movinfo ?? []} />  
+      {movexists?<Movies movies={movinfo ?? []} /> :
+       <div className="flex items-center justify-center pt-10">
+        <div >No Movie Found...</div>
+       </div>}
+       
     </div>
 
   )

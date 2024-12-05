@@ -11,7 +11,7 @@ export default function BasicRating() {
       color: "#a78bfa", // Set empty stars to white
     },
   }}
-        precision ={0.5}
+        precision ={0.1}
         size="large"
         name="simple-controlled"
         value={value}
